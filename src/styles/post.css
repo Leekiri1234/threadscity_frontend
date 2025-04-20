@@ -1,0 +1,650 @@
+/* Post feed container với nền trắng */
+.post-feed-container {
+  background-color: var(--background-primary);
+  overflow: visible;
+  flex-grow: 1;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+/* Post feed styling */
+.post-feed {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Post item styling */
+.post-item {
+  background-color: transparent;
+  padding: 16px;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid var(--feed-border-color);
+  border-radius: 0;
+  margin-bottom: 0;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.post-item:hover {
+  background-color: var(--background-secondary);
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-header, .post-content, .post-actions {
+  width: 100%;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.post-author-avatar {
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.post-author-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.default-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.post-info {
+  flex-grow: 1;
+}
+
+.post-author-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.post-author-name:hover {
+  text-decoration: underline;
+}
+
+.post-timestamp {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  display: block;
+  margin-top: 2px;
+}
+
+.post-more-options {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.post-more-options:hover {
+  background-color: var(--background-tertiary);
+}
+
+.post-more-options svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--text-secondary);
+}
+
+.post-content {
+  margin-bottom: 4px;
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.post-image {
+  margin-top: 12px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.post-image img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.post-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 2px;
+}
+
+.post-action {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.post-action svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--text-secondary);
+}
+
+.post-action:hover {
+  color: var(--primary-color);
+}
+
+.post-action:hover svg {
+  fill: var(--primary-color);
+}
+
+.post-action.is-active {
+  color: var(--accent-color);
+}
+
+.post-action.is-active svg {
+  fill: var(--accent-color);
+}
+
+/* Home page header */
+.home-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: var(--background-primary);
+  z-index: 10;
+}
+
+/* Create post form */
+.create-post {
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  background-color: var(--background-primary);
+  border-radius: 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  align-items: flex-start;
+}
+
+.create-post-avatar-placeholder {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--background-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.create-post-input {
+  flex-grow: 1;
+  cursor: pointer;
+  background-color: var(--background-secondary);
+  border-radius: 20px;
+  padding: 10px 16px;
+  margin-right: 8px;
+  transition: background-color 0.2s ease;
+  color: var(--text-primary);
+}
+
+.create-post-input:hover {
+  background-color: var(--background-tertiary);
+}
+
+.create-post-placeholder {
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+
+.post-submit-button {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-top: 2px;
+  align-self: center;
+}
+
+.post-submit-button:hover {
+  background-color: var(--background-secondary);
+}
+
+/* Create post textarea placeholder */
+.create-post-textarea-placeholder {
+  color: var(--text-tertiary);
+  font-size: 16px;
+  margin-bottom: 12px;
+  cursor: text;
+}
+
+.create-post-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-attachments {
+  display: flex;
+  gap: 12px;
+}
+
+.attachment-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.attachment-button svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--text-secondary);
+}
+
+.attachment-button:hover svg {
+  fill: var(--primary-color);
+}
+
+/* Feed card - main container */
+.feed-card {
+  background-color: var(--background-primary);
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--feed-box-shadow);
+}
+
+/* Post Detail Page Styling - Updated */
+.post-detail-container {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 5px 15px 15px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 100vh;
+  gap: 4px;
+}
+
+/* Post Detail Header - Updated to match feed types header */
+.post-detail-header-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 5px 0;
+  background-color: transparent;
+  border-radius: 16px;
+  box-shadow: none;
+  z-index: 10;
+  border: none;
+}
+
+.post-detail-header {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+}
+
+.post-detail-back {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.post-detail-back:hover {
+  background-color: var(--background-tertiary);
+}
+
+.post-detail-back svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-primary);
+}
+
+.post-detail-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.post-detail-options {
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out; /* Thêm transition cho tất cả thuộc tính */
+}
+
+.post-detail-options:hover {
+  background-color: var(--background-secondary);
+  transform: scale(1.1); /* Tăng kích thước khi hover */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng nhẹ */
+}
+
+.post-detail-options svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: fill 0.2s ease; /* Thêm transition cho màu sắc */
+}
+
+.post-detail-options:hover svg {
+  fill: var(--primary-color); /* Thay đổi màu khi hover */
+}
+
+/* Post Detail Content Wrapper - Match feed-wrapper style */
+.post-detail-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Main post styling */
+.post-detail-main .post-detail-item {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Post detail replies styling */
+.post-detail-replies .post-detail-reply-item {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.post-detail-reply-item:last-child {
+  border-bottom: none;
+}
+
+/* Reply form */
+.post-reply-form-container {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--background-primary);
+}
+
+.post-reply-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.post-reply-avatar {
+  flex-shrink: 0;
+}
+
+.post-reply-input {
+  flex-grow: 1;
+  border: none;
+  background-color: var(--background-secondary);
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 14px;
+  outline: none;
+  color: var(--text-primary);
+}
+
+.post-reply-input:focus {
+  background-color: var(--background-tertiary);
+}
+
+.post-reply-button {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.post-reply-button:hover {
+  background-color: var(--background-secondary);
+}
+
+.post-reply-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: var(--text-tertiary);
+}
+
+/* Section heading for top replies */
+.post-detail-section-heading {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--background-primary);
+}
+
+.post-detail-section-heading h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* Sort header styling */
+.post-detail-sort-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--background-primary);
+  position: relative;
+  width: 100%;
+}
+
+/* Sort dropdown styling */
+.post-sort-dropdown-container {
+  position: relative;
+}
+
+.post-sort-dropdown-button {
+  border: none;
+  background: transparent;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.post-sort-dropdown-button svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--text-primary);
+}
+
+/* View activity link styling */
+.post-view-activity {
+  color: var(--text-tertiary);
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.post-view-activity:hover {
+  color: var(--text-primary);
+}
+
+.post-view-activity svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--text-tertiary);
+}
+
+.post-view-activity:hover svg {
+  fill: var(--text-primary);
+}
+
+/* Sort dropdown menu styling */
+.post-sort-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 180px;
+  background-color: var(--background-primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  z-index: 100;
+  margin-top: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.post-sort-option {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: var(--text-primary);
+}
+
+.post-sort-option:hover {
+  background-color: var(--background-secondary);
+}
+
+.post-sort-option.selected {
+  font-weight: 600;
+}
+
+.post-sort-option svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--primary-color);
+}
+
+/* Loading and error states */
+.post-detail-loading,
+.post-detail-error {
+  padding: 40px 16px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.post-detail-error a {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--primary-color);
+}
+
+/* Make post items in detail view non-clickable */
+.post-detail-container .post-item,
+.post-detail-container .post-detail-reply-item {
+  cursor: default;
+}
+
+.post-detail-container .post-item:hover,
+.post-detail-container .post-detail-reply-item:hover {
+  background-color: transparent;
+}
+
+/* Custom scrollbar for post detail main */
+.post-detail-main::-webkit-scrollbar {
+  width: 8px;
+}
+
+.post-detail-main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.post-detail-main::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 20px;
+  border: 2px solid var(--background-primary);
+}
+
+.post-detail-main::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-tertiary);
+}

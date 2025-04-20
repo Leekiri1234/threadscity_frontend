@@ -1,0 +1,133 @@
+.theme-selector {
+  position: absolute;
+  left: 100%;
+  bottom: 0;
+  background-color: var(--background-primary);
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  width: 240px;
+  overflow: hidden;
+  z-index: 1200;
+  visibility: visible;
+  opacity: 1;
+  border: 2px solid var(--border-color);
+  margin-left: 10px;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.theme-selector-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: transform 0.2s;
+}
+
+.back-button:hover {
+  color: var(--text-primary);
+  transform: translateX(-2px);
+}
+
+.back-button svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-secondary);
+}
+
+.back-button:hover svg {
+  fill: var(--text-primary);
+}
+
+.theme-selector-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.theme-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.theme-option:hover {
+  background-color: var(--background-secondary);
+}
+
+.theme-option.selected {
+  font-weight: 500;
+}
+
+.theme-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.theme-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Giữ màu cụ thể cho các biểu tượng để phân biệt giữa các tùy chọn */
+.light-icon svg {
+  color: #ff9500;
+  fill: #ff9500;
+}
+
+.dark-icon svg {
+  color: #6e6e73;
+  fill: #6e6e73;
+}
+
+.theme-option span {
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.checkmark {
+  position: absolute;
+  right: 16px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

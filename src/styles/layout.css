@@ -1,0 +1,95 @@
+/* Base styling */
+.App {
+  min-height: 100vh;
+  display: flex;
+  background-color: var(--background-primary);
+}
+
+/* Container styling */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* App layout with vertical navbar */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--page-background-faded);
+  /* Cho phép cuộn từ bất kỳ đâu trên trang */
+  overflow-y: auto;
+  height: 100vh;
+}
+
+/* Main content styling with offset for vertical navbar */
+.main-content {
+  flex-grow: 1;
+  margin-left: 70px;
+  width: calc(100% - 70px);
+  min-height: 100%;
+  /* Đảm bảo content flow tự nhiên */
+  overflow-y: visible;
+  overflow-x: hidden;
+}
+
+/* Page layouts */
+.page-container {
+  padding: 2.5rem 0;
+  /* Use the standardized fadeIn animation from animations.css instead */
+}
+
+/* Grid system */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.75rem;
+}
+
+.col {
+  flex: 1;
+  padding: 0 0.75rem;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Card styling */
+.card {
+  background-color: var(--background-primary);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: 1.75rem;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.card-body {
+  color: var(--text-secondary);
+}

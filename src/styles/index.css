@@ -1,0 +1,18 @@
+/* Main CSS file that imports all modular CSS files */
+
+/* Import variables and base first */
+@import './variables.css';
+@import './base.css';
+
+/* Import other CSS modules */
+@import './layout.css';
+@import './navbar.css';
+@import './post.css';
+@import './modal.css';
+@import './auth.css';
+@import './home.css';
+@import './profile.css';
+@import './utilities.css';
+@import './animations.css';
+@import './search.css';
+@import './theme-selector.css';

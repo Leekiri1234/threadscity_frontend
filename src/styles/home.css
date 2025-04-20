@@ -1,0 +1,168 @@
+@import './variables.css';
+
+/* Home container styles */
+.home-container {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 5px 15px 15px; /* Giảm padding top từ 15px xuống 5px */
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 100vh;
+  gap: 4px; /* Giảm khoảng cách giữa feed types và post feed từ 10px xuống 4px */
+}
+
+/* Feed header wrapper - thanh feed types nằm bên ngoài post feed */
+.feed-header-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 5px 0; /* Giảm padding từ 10px xuống 5px */
+  background-color: transparent;
+  border-radius: 16px;
+  box-shadow: none;
+  z-index: 10;
+  border: none;
+}
+
+/* Feed wrapper - container cho phần post feed có thể cuộn */
+.feed-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 100px); /* Thống nhất chiều cao giữa các trang */
+  background-color: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Feed area có thể cuộn */
+.feed-scrollable-area {
+  flex-grow: 1;
+  overflow-y: auto;
+  height: 100%;
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+/* Feed content area - khu vực bao quanh feed có thể cuộn */
+.feed-content-area {
+  background-color: var(--background-primary);
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 5px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Feed styles */
+.feed-card {
+  background-color: var(--background-primary);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Feed selector styles */
+.feed-selector {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  width: auto;
+  z-index: 100;
+}
+
+.feed-selector-header {
+  padding: 10px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-primary);
+  position: relative;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  transition: none;
+  box-shadow: none;
+}
+
+.feed-selector-header:hover {
+  background-color: transparent;
+}
+
+.feed-selector-title {
+  font-size: 16px;
+  margin-right: 6px;
+}
+
+.dropdown-arrow {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+  color: var(--text-secondary);
+  fill: var(--text-secondary);
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* Feed selector dropdown */
+.feed-selector-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  z-index: 20;
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.feed-option {
+  width: 100%;
+  padding: 14px 20px;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: var(--text-primary);
+}
+
+.feed-option:hover {
+  background-color: var(--background-secondary);
+}
+
+.feed-option.active {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Custom scrollbar cho thiết bị webkit (Chrome, Safari) */
+.feed-scrollable-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.feed-scrollable-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.feed-scrollable-area::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 20px;
+  border: 2px solid var(--background-primary);
+}
+
+.feed-scrollable-area::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-tertiary);
+}

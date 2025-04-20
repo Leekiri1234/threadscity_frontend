@@ -1,0 +1,74 @@
+:root {
+  /* Light mode (default) - Black & White Theme */
+  --primary-color: #000000; /* Black instead of Twitter blue */
+  --primary-light: #333333; /* Dark gray */
+  --primary-dark: #000000; /* Pure black */
+  --accent-color: #000000; /* Black instead of pink */
+  --background-primary: #ffffff; /* White */
+  --background-secondary: #f7f7f7; /* Light gray */
+  --background-tertiary: #eeeeee; /* Lighter gray */
+  --text-primary: #000000; /* Black */
+  --text-secondary: #555555; /* Dark gray */
+  --text-tertiary: #888888; /* Medium gray */
+  --border-color: #dddddd; /* Light gray border */
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+  
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+  --transition-normal: 0.3s cubic-bezier(0.45, 0, 0.55, 1);
+  --transition-slow: 0.5s cubic-bezier(0.45, 0, 0.55, 1);
+  
+  /* Fonts */
+  --font-main: 'Helvetica', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-code: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  
+  /* Special effects for UI elements */
+  --navbar-background-faded: rgba(250, 250, 250, 0.03);
+  --page-background-faded: rgba(250, 250, 250, 0.95);
+  --feed-border-color: rgba(0, 0, 0, 0.15);
+  --feed-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --navbar-border-color: rgba(0, 0, 0, 0.015);
+  --navbar-glass-effect: rgba(255, 255, 255, 0.03);
+  --navbar-shadow: none;
+}
+
+/* Dark mode theme */
+[data-theme="dark"] {
+  /* Hoàn toàn đảo ngược màu sắc từ light mode */
+  --primary-color: #ffffff; /* Đảo ngược - White */
+  --primary-light: #dddddd; /* Đảo ngược - Light gray */
+  --primary-dark: #ffffff; /* Đảo ngược - White */
+  --accent-color: #ffffff; /* Đảo ngược - White */
+  --background-primary: #181818; /* Màu đen sáng hơn một chút */
+  --background-secondary: #222222; /* Điều chỉnh màu xám sáng hơn */
+  --background-tertiary: #2d2d2d; /* Điều chỉnh màu xám sáng hơn */
+  --text-primary: #ffffff; /* Đảo ngược - White */
+  --text-secondary: #bbbbbb; /* Đảo ngược - Light gray */
+  --text-tertiary: #888888; /* Đảo ngược - Medium gray */
+  --border-color: #383838; /* Màu viền sáng hơn */
+  
+  /* Shadows điều chỉnh cho nền tối */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+  
+  /* Đảo ngược các hiệu ứng đặc biệt cho UI elements */
+  --navbar-background-faded: rgba(0, 0, 0, 0.03);
+  --page-background-faded: rgba(0, 0, 0, 0.95);
+  --feed-border-color: rgba(255, 255, 255, 0.08); /* Điều chỉnh độ mờ của viền */
+  --feed-box-shadow: 0 2px 12px rgba(255, 255, 255, 0.03); /* Điều chỉnh độ mờ của shadow */
+  --navbar-border-color: rgba(255, 255, 255, 0.015);
+  --navbar-glass-effect: rgba(0, 0, 0, 0.03);
+  --navbar-shadow: 0 1px 3px rgba(255, 255, 255, 0.03); 
+}
