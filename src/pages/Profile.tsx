@@ -233,67 +233,7 @@ export function Profile() {
           </div>
           
           {/* Completion section for user's own profile */}
-          {isCurrentUser && (
-            <div className="profile-completion-section">
-              <div className="profile-completion-header">
-                <h3>Hoàn tất trang cá nhân</h3>
-                <span className="profile-completion-count">Còn 1 mục</span>
-              </div>
-              
-              <div className="profile-completion-items">
-                <div className="profile-completion-item">
-                  <div className="profile-completion-icon create-thread">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M23 3c-6.62-.1-10.38 2.421-13.05 6.03C7.29 12.61 6 17.331 6 22h2c0-1.007.07-2.012.19-3H12c4.1 0 7.48-3.082 7.94-7.054C22.79 10.147 23.17 6.359 23 3zm-7 8h-1.5v2H16c.63-.016 1.2-.08 1.72-.188C16.95 15.24 14.68 17 12 17H8.55c.57-2.512 1.57-4.851 3-6.78 2.16-2.912 5.29-4.911 9.45-5.187C20.95 8.079 19.9 11 16 11zM4 9V6H1V4h3V1h2v3h3v2H6v3H4z"></path>
-                    </svg>
-                  </div>
-                  <div className="profile-completion-info">
-                    <div className="profile-completion-title">Tạo thread</div>
-                    <div className="profile-completion-description">
-                      Cho mọi người biết bạn đang nghĩ gì hoặc chia sẻ về một điều mới đây.
-                    </div>
-                  </div>
-                  <div className="profile-completion-action">
-                    <button className="profile-completion-button">Tạo</button>
-                  </div>
-                </div>
-                
-                <div className="profile-completion-item completed">
-                  <div className="profile-completion-icon add-photo">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M12 11.816c1.355 0 2.872-.15 3.84-1.256.814-.93 1.078-2.368.806-4.392-.38-2.825-2.117-4.512-4.646-4.512S7.734 3.343 7.354 6.17c-.272 2.022-.008 3.46.806 4.39.968 1.107 2.485 1.256 3.84 1.256zM8.84 6.368c.162-1.2.787-3.212 3.16-3.212s2.998 2.013 3.16 3.212c.207 1.55.057 2.627-.45 3.205-.455.52-1.266.743-2.71.743s-2.255-.223-2.71-.743c-.507-.578-.657-1.656-.45-3.205zm11.44 12.868c-.877-3.526-4.282-5.99-8.28-5.99s-7.403 2.464-8.28 5.99c-.172.692-.028 1.4.395 1.94.408.52 1.04.82 1.733.82h12.304c.693 0 1.325-.3 1.733-.82.424-.54.567-1.247.394-1.94zm-1.576 1.016c-.126.16-.316.246-.552.246H5.848c-.235 0-.426-.085-.552-.246-.137-.174-.18-.412-.12-.654.71-2.855 3.517-4.85 6.824-4.85s6.114 1.994 6.824 4.85c.06.242.017.48-.12.654z"></path>
-                    </svg>
-                  </div>
-                  <div className="profile-completion-info">
-                    <div className="profile-completion-title">Thêm ảnh đại diện</div>
-                    <div className="profile-completion-description">
-                      Giúp mọi người dễ dàng nhận ra bạn hơn.
-                    </div>
-                  </div>
-                  <div className="profile-completion-action">
-                    <span className="profile-completion-status">Xong</span>
-                  </div>
-                </div>
-                
-                <div className="profile-completion-item completed">
-                  <div className="profile-completion-icon follow-users">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M17.863 13.44c1.477 1.58 2.366 3.8 2.632 6.46l.11 1.1H3.395l.11-1.1c.266-2.66 1.155-4.88 2.632-6.46C7.627 11.85 9.648 11 12 11s4.373.85 5.863 2.44zM12 2C9.791 2 8 3.79 8 6s1.791 4 4 4 4-1.79 4-4-1.791-4-4-4z"></path>
-                    </svg>
-                  </div>
-                  <div className="profile-completion-info">
-                    <div className="profile-completion-title">Theo dõi 5 trang cá nhân</div>
-                    <div className="profile-completion-description">
-                      Hãy lấp đầy bảng feed bằng những thread bạn quan tâm.
-                    </div>
-                  </div>
-                  <div className="profile-completion-action">
-                    <span className="profile-completion-status">Xong</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          {/* Đã loại bỏ phần "Hoàn tất trang cá nhân" theo yêu cầu */}
           
           {/* Content Tabs */}
           <div className="profile-tabs">
@@ -323,19 +263,13 @@ export function Profile() {
               <div className="create-post-avatar-placeholder">
                 {(userProfile?.displayName || userProfile?.username)?.charAt(0).toUpperCase()}
               </div>
-              <div className="create-post-input">
-                <input 
-                  type="text" 
-                  className="create-post-input-field" 
-                  placeholder="Có gì mới?"
-                  value={newPostContent}
-                  onChange={(e) => setNewPostContent(e.target.value)}
-                />
+              <div className="create-post-input" onClick={() => window.dispatchEvent(new CustomEvent('open_create_post'))}>
+                <div className="create-post-placeholder">Có gì mới?</div>
               </div>
               <button 
+                type="button" 
                 className="post-submit-button"
-                disabled={!newPostContent.trim()}
-                onClick={handleNewPostSubmit}
+                onClick={() => window.dispatchEvent(new CustomEvent('open_create_post'))}
               >
                 Đăng
               </button>

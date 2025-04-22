@@ -1,7 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import threadsLogo from '../assets/Threads_(app)_logo.svg';
 import { useState, useRef, useEffect } from 'react';
 import { ThemeSelector } from './ThemeSelector';
+import { useAuth } from '../contexts/AuthContext';
 
 interface NavbarProps {
   openCreatePostModal?: () => void;
@@ -9,6 +10,8 @@ interface NavbarProps {
 
 export function Navbar({ openCreatePostModal }: NavbarProps = {}) {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { logout } = useAuth();
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const settingsDropdownRef = useRef<HTMLDivElement>(null);
@@ -50,6 +53,22 @@ export function Navbar({ openCreatePostModal }: NavbarProps = {}) {
   const handleBackFromThemeMenu = () => {
     setThemeMenuOpen(false);
     setSettingsOpen(true);
+  };
+
+  // Xử lý sự kiện đăng xuất
+  const handleLogout = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    try {
+      // Hiển thị thông báo loading nếu cần
+      await logout();
+      // Sau khi đăng xuất thành công, chuyển hướng về trang đăng nhập
+      navigate('/login');
+      // Đóng dropdown menu
+      setSettingsOpen(false);
+    } catch (error) {
+      console.error('Đăng xuất thất bại:', error);
+      // Có thể thêm xử lý lỗi ở đây (hiển thị thông báo lỗi)
+    }
   };
 
   // Xử lý việc đóng dropdown khi click bên ngoài
@@ -156,7 +175,7 @@ export function Navbar({ openCreatePostModal }: NavbarProps = {}) {
                 <path d="M9.4 18L8 16.6l4.6-4.6L8 7.4 9.4 6l6 6-6 6z"></path>
               </svg>
             </a>
-            <Link to="/logout" className="settings-dropdown-item">
+            <Link to="/logout" className="settings-dropdown-item" onClick={handleLogout}>
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"></path>
               </svg>

@@ -1,5 +1,5 @@
 // src/App.tsx
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
@@ -8,7 +8,9 @@ import { PostDetail } from './pages/PostDetail';
 import { Search } from './pages/Search';
 import { Profile } from './pages/Profile'; 
 import { Notifications } from './pages/Notifications';
-import { CreatePostModal } from './components/CreatePostModal'; // Thêm import CreatePostModal
+import { CreatePostModal } from './components/CreatePostModal';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { useAuth } from './contexts/AuthContext';
 import './styles/index.css';
 import { ReactNode, useState, useEffect } from 'react';
 
@@ -80,60 +82,82 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={
-          <AppLayout openCreatePostModal={handleOpenCreateModal}>
-            <Home />
-          </AppLayout>
-        } />
-        <Route path="/post/:postId" element={
-          <AppLayout openCreatePostModal={handleOpenCreateModal}>
-            <PostDetail />
-          </AppLayout>
-        } />
-        <Route path="/search" element={
-          <AppLayout openCreatePostModal={handleOpenCreateModal}>
-            <Search />
-          </AppLayout>
-        } />
-        <Route path="/create" element={
-          <AppLayout openCreatePostModal={handleOpenCreateModal}>
-            <div className="home-container">
-              <h2>Tạo bài viết mới</h2>
-            </div>
-          </AppLayout>
-        } />
-        <Route path="/favorites" element={
-          <AppLayout openCreatePostModal={handleOpenCreateModal}>
-            <Notifications />
-          </AppLayout>
-        } />
-        <Route path="/profile/:userId?" element={
-          <AppLayout openCreatePostModal={handleOpenCreateModal}>
-            <Profile />
-          </AppLayout>
-        } />
-        <Route path="/pins" element={
-          <AppLayout openCreatePostModal={handleOpenCreateModal}>
-            <div className="home-container">
-              <h2>Bài viết đã ghim</h2>
-            </div>
-          </AppLayout>
-        } />
-        <Route path="/settings" element={
-          <AppLayout openCreatePostModal={handleOpenCreateModal}>
-            <div className="home-container">
-              <h2>Cài đặt</h2>
-            </div>
-          </AppLayout>
-        } />
+        {/* Public routes - không yêu cầu đăng nhập */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* Protected routes - yêu cầu đăng nhập */}
+        <Route path="/" element={
+          <ProtectedRoute>
+            <AppLayout openCreatePostModal={handleOpenCreateModal}>
+              <Home />
+            </AppLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/post/:postId" element={
+          <ProtectedRoute>
+            <AppLayout openCreatePostModal={handleOpenCreateModal}>
+              <PostDetail />
+            </AppLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/search" element={
+          <ProtectedRoute>
+            <AppLayout openCreatePostModal={handleOpenCreateModal}>
+              <Search />
+            </AppLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/create" element={
+          <ProtectedRoute>
+            <AppLayout openCreatePostModal={handleOpenCreateModal}>
+              <div className="home-container">
+                <h2>Tạo bài viết mới</h2>
+              </div>
+            </AppLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/favorites" element={
+          <ProtectedRoute>
+            <AppLayout openCreatePostModal={handleOpenCreateModal}>
+              <Notifications />
+            </AppLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/profile/:userId?" element={
+          <ProtectedRoute>
+            <AppLayout openCreatePostModal={handleOpenCreateModal}>
+              <Profile />
+            </AppLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/pins" element={
+          <ProtectedRoute>
+            <AppLayout openCreatePostModal={handleOpenCreateModal}>
+              <div className="home-container">
+                <h2>Bài viết đã ghim</h2>
+              </div>
+            </AppLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/settings" element={
+          <ProtectedRoute>
+            <AppLayout openCreatePostModal={handleOpenCreateModal}>
+              <div className="home-container">
+                <h2>Cài đặt</h2>
+              </div>
+            </AppLayout>
+          </ProtectedRoute>
+        } />
+        {/* Fallback route - bọc trong ProtectedRoute */}
         <Route path="*" element={
-          <AppLayout openCreatePostModal={handleOpenCreateModal}>
-            <div className="home-container">
-              <h2>404 - Không tìm thấy trang</h2>
-            </div>
-          </AppLayout>
+          <ProtectedRoute>
+            <AppLayout openCreatePostModal={handleOpenCreateModal}>
+              <div className="home-container">
+                <h2>404 - Không tìm thấy trang</h2>
+              </div>
+            </AppLayout>
+          </ProtectedRoute>
         } />
       </Routes>
 
