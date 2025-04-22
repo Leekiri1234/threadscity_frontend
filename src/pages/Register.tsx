@@ -6,6 +6,7 @@ import threadsLogo from '../assets/Threads_(app)_logo.svg';
 
 export function Register() {
   const [username, setUsername] = useState('');
+  const [fullName, setFullName] = useState(''); // New state for full name
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -32,7 +33,7 @@ export function Register() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!username.trim() || !email.trim() || !password.trim() || !confirmPassword.trim()) {
+    if (!username.trim() || !email.trim() || !password.trim() || !confirmPassword.trim() || !fullName.trim()) {
       return setError('Vui lòng điền đầy đủ thông tin');
     }
     
@@ -48,7 +49,7 @@ export function Register() {
     try {
       setError('');
       setLoading(true);
-      await register(username, email, password);
+      await register(username, email, password, fullName);
       navigate('/login', { state: { message: 'Đăng ký thành công. Vui lòng đăng nhập.' } });
     } catch (err: any) {
       // Kiểm tra nếu là lỗi mạng (không có response)
@@ -164,6 +165,16 @@ export function Register() {
             placeholder="Tên người dùng"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            disabled={loading}
+            required
+          />
+          
+          <input
+            className="auth-input"
+            type="text"
+            placeholder="Họ tên"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             disabled={loading}
             required
           />

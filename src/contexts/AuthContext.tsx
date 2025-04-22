@@ -8,7 +8,7 @@ interface AuthContextType {
   user: any | null;
   login: (username: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
-  register: (username: string, email: string, password: string) => Promise<void>;
+  register: (username: string, email: string, password: string, fullName: string) => Promise<void>;
 }
 
 // Create the context with a default value
@@ -55,9 +55,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (username: string, password: string) => {
     try {
       const response = await AuthService.login({ username, password });
+      
+      // Đặt state ngay lập tức để kích hoạt điều hướng
       setIsAuthenticated(true);
-      // You might want to fetch user data here after successful login
-      // For example: const userData = await userService.getProfile(); setUser(userData);
+      
+      // Thêm debug log
+      console.log('Login successful, setting isAuthenticated to true');
+      
       return response;
     } catch (error) {
       console.error('Login failed:', error);
@@ -80,9 +84,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   // Register function
-  const register = async (username: string, email: string, password: string) => {
+  const register = async (username: string, email: string, password: string, fullName: string) => {
     try {
-      const response = await AuthService.register({ username, email, password });
+      const response = await AuthService.register({ username, email, password, fullName });
       // Note: You might want to auto-login after registration or redirect
       return response;
     } catch (error) {

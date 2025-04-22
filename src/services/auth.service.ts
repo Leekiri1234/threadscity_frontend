@@ -4,6 +4,7 @@ export interface RegisterData {
   username: string;
   email: string;
   password: string;
+  fullName: string;
 }
 
 export interface LoginData {
@@ -103,9 +104,11 @@ const AuthService = {
   checkAuth: async (): Promise<boolean> => {
     try {
       // Use an endpoint that requires authentication
-      await api.get('/homepage');
+      const response = await api.get('/homepage');
+      console.log('Auth check response:', response.status);
       return true;
-    } catch (error) {
+    } catch (error: any) {
+      console.error('Auth check failed:', error.response?.status || error.message);
       return false;
     }
   }
