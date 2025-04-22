@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PostItem, PostProps } from '../components/PostItem';
 import { FeedSelector } from '../components/FeedSelector';
 
 export function Home() {
   const [selectedFeed, setSelectedFeed] = useState<'suggested' | 'following'>('suggested');
+
+  // Thiết lập tiêu đề trang thành "Trang chủ" khi component được mount
+  useEffect(() => {
+    document.title = 'Trang chủ | ThreadsCity';
+  }, []);
 
   // Demo posts - dữ liệu mẫu cố định
   const demoPosts: PostProps[] = [

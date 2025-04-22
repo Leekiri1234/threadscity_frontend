@@ -17,6 +17,9 @@ export function PostDetail() {
   const [selectedPost, setSelectedPost] = useState<PostProps | null>(null);
 
   useEffect(() => {
+    // Đặt tiêu đề trang
+    document.title = "Chi tiết bài đăng | ThreadsCity";
+    
     // For now, use mock data - in a real app, you would fetch post data from API
     const fetchPostData = async () => {
       try {
@@ -334,8 +337,8 @@ export function PostDetail() {
                   <button className="post-more-options">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
-                    </svg>
-                  </button>
+                  </svg>
+                </button>
                 </div>
 
                 <div className="post-content">

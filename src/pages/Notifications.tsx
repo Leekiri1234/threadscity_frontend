@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/home.css';
 import '../styles/notifications.css';
 import { NotificationsSelector } from '../components/NotificationsSelector';
@@ -79,6 +79,11 @@ const NotificationItem = ({ notification }: { notification: NotificationProps })
 
 export function Notifications() {
   const [selectedType, setSelectedType] = useState<'all' | 'follows' | 'thread_replies' | 'mentions' | 'reposts'>('all');
+
+  // Thiết lập tiêu đề trang khi component được mount
+  useEffect(() => {
+    document.title = 'Thông báo | ThreadsCity';
+  }, []);
 
   // Demo notifications data
   const demoNotifications: NotificationProps[] = [

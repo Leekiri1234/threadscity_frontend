@@ -117,7 +117,7 @@ export default function App() {
             </AppLayout>
           </ProtectedRoute>
         } />
-        <Route path="/favorites" element={
+        <Route path="/notifications" element={
           <ProtectedRoute>
             <AppLayout openCreatePostModal={handleOpenCreateModal}>
               <Notifications />

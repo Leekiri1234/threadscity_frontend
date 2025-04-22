@@ -27,6 +27,9 @@ export function Search() {
     }
     
     fetchSuggestedUsers();
+
+    // Đặt tiêu đề trang
+    document.title = "Tìm kiếm | ThreadsCity";
   }, []);
   
   const handleGoBack = () => {
@@ -115,7 +118,7 @@ export function Search() {
           <h2 className="post-detail-title">Tìm kiếm</h2>
           <button className="post-detail-options">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
+              <path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
             </svg>
           </button>
         </div>
