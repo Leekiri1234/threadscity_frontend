@@ -67,6 +67,8 @@ const AuthService = {
     return retryNetworkRequest(async () => {
       try {
         const response = await api.post<AuthResponse>('/auth', data);
+        console.log(response.data);
+        
         return response.data;
       } catch (error: any) {
         if (error.response && error.response.data) {
@@ -101,17 +103,24 @@ const AuthService = {
   },
 
   // Check if user is authenticated
-  checkAuth: async (): Promise<boolean> => {
+  checkAuth: async (): Promise<{ success: boolean; data?: any }> => {
     try {
-      // Use an endpoint that requires authentication
       const response = await api.get('/protected');
       console.log('Auth check response:', response.status);
-      return true;
+      console.log(response.data);
+  
+      return {
+        success: true,
+        data: response.data,
+      };
     } catch (error: any) {
       console.error('Auth check failed:', error.response?.status || error.message);
-      return false;
+      return {
+        success: false,
+      };
     }
   }
+  
 };
 
 export default AuthService;

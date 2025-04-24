@@ -36,20 +36,28 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const isAuth = await AuthService.checkAuth();
-        setIsAuthenticated(isAuth);
-        // If we want to get user data, we would do it here
-        // For example: if (isAuth) { const userData = await userService.getProfile(); setUser(userData); }
+        const result = await AuthService.checkAuth();
+        console.log(result);
+  
+        if (result.success) {
+          setIsAuthenticated(true);
+          setUser(result.data);
+        } else {
+          setIsAuthenticated(false);
+          setUser(null);
+        }
       } catch (error) {
+        console.error('Error during auth check:', error);
         setIsAuthenticated(false);
         setUser(null);
       } finally {
         setIsLoading(false);
       }
     };
-
+  
     checkAuth();
   }, []);
+  
 
   // Login function
   const login = async (username: string, password: string) => {
