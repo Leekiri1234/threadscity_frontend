@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useRef, useEffect } from 'react';
 
 interface CreatePostModalProps {
@@ -37,13 +38,27 @@ export function CreatePostModal({ isOpen, onClose, onSubmit, submitting }: Creat
   }, [isOpen, onClose]);
 
   // Handle submit
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (content.trim()) {
-      onSubmit(content);
-      setContent('');
+      try {
+        const res = await axios.post(
+          "http://localhost:3001/api/create_post",
+          { content },
+          { withCredentials: true }
+        );
+  
+        console.log("✅ Post created:", res.data);
+        onSubmit(content);
+        setContent('');
+        onClose();
+      } catch (error: any) {
+        console.error("Error creating post:", error);
+        alert(error.response?.data?.message || "Lỗi khi đăng bài");
+      }
     }
   };
+  
 
   if (!isOpen) return null;
 

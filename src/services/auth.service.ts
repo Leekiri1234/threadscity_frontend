@@ -104,7 +104,7 @@ const AuthService = {
   checkAuth: async (): Promise<boolean> => {
     try {
       // Use an endpoint that requires authentication
-      const response = await api.get('/homepage');
+      const response = await api.get('/protected');
       console.log('Auth check response:', response.status);
       return true;
     } catch (error: any) {
